@@ -10,9 +10,28 @@ contract("Testing the Person contract", function(accounts){
     });
   });
   describe("Test the contract variables", function(){
-    it("The name variable is Diego", function(){
+    describe("Variable: name", function(){})
+      it("Use setName to set the first name", function(){
+        return personContract.setName("Fabian").then(function(response){
+          expect(response).to.not.be.an("error");
+        });
+      });
+
+      it("Check the first name was set properly", function(){
+        return personContract.name().then(function(response){
+          expect(response.toString()).to.be.equal("Fabian");
+        });
+      });
+
+    it("Use setName to set the second name", function(){
+      return personContract.setName("Pedro").then(function(response){
+        expect(response).to.not.be.an("error");
+      });
+    });
+
+    it("Check the second name was set properly", function(){
       return personContract.name().then(function(response){
-        expect(response.toString()).to.be.equal("Diego");
+        expect(response.toString()).to.be.equal("Pedro");
       });
     });
   });
